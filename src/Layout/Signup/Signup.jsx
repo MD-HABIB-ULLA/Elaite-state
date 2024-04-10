@@ -9,7 +9,14 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
-  const { creatNewUser, loading, updateUserProfile } = useContext(Authcontext);
+  const {
+    creatNewUser,
+    loading,
+    setLoading,
+    updateUserProfile,
+    singInUserByGoogle,
+    singInUserByGithub,
+  } = useContext(Authcontext);
   const [showPassword, setShowPassword] = useState(false);
 
   const location = useLocation();
@@ -17,7 +24,34 @@ const Signup = () => {
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
-
+  const handleGoogleButton = () => {
+    singInUserByGoogle()
+      .then(() => {
+        toast.success("Sign In successful!");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.code === "auth/account-exists-with-different-credential") {
+          toast.error("This email alreay exist");
+          setLoading(false);
+        }
+      });
+  };
+  const handleGithubButton = () => {
+    singInUserByGithub()
+      .then(() => {
+        toast.success("Sign In successful!");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log(error.code);
+        if (error.code === "auth/account-exists-with-different-credential") {
+          toast.error("This email alreay exist");
+          setLoading(false);
+        }
+      });
+  };
   const {
     register,
     handleSubmit,
@@ -171,7 +205,11 @@ const Signup = () => {
             <div className="flex-1 h-px sm:w-16 bg-[#00c194]"></div>
           </div>
           <div className="flex justify-center space-x-4">
-            <button aria-label="Log in with Google" className="p-3 rounded-sm">
+            <button
+              onClick={handleGoogleButton}
+              aria-label="Log in with Google"
+              className="p-3 rounded-sm"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 32 32"
@@ -181,7 +219,11 @@ const Signup = () => {
               </svg>
             </button>
 
-            <button aria-label="Log in with GitHub" className="p-3 rounded-sm">
+            <button
+              onClick={handleGithubButton}
+              aria-label="Log in with GitHub"
+              className="p-3 rounded-sm"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 32 32"

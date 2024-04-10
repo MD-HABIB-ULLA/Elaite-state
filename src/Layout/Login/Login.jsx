@@ -8,7 +8,13 @@ import { Authcontext } from "../../Provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
-  const { signInUser, loading , setLoading} = useContext(Authcontext);
+  const {
+    signInUser,
+    loading,
+    setLoading,
+    singInUserByGoogle,
+    singInUserByGithub,
+  } = useContext(Authcontext);
   const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -16,11 +22,39 @@ const Login = () => {
     setShowPassword((prevState) => !prevState);
   };
 
+  const handleGoogleButton = () => {
+    singInUserByGoogle()
+      .then(() => {
+        toast.success("Sign In successful!");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.code === "auth/account-exists-with-different-credential") {
+          toast.error("This email alreay exist");
+          setLoading(false);
+        }
+      });
+  };
+  const handleGithubButton = () => {
+    singInUserByGithub()
+      .then(() => {
+        toast.success("Sign In successful!");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log(error.code);
+        if (error.code === "auth/account-exists-with-different-credential") {
+          toast.error("This email alreay exist");
+          setLoading(false);
+        }
+      });
+  };
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  
   } = useForm();
   const onSubmit = (data, e) => {
     signInUser(data.email, data.password)
@@ -31,10 +65,10 @@ const Login = () => {
         e.target.reset();
       })
       .catch((error) => {
-       if(error.code === "auth/invalid-credential"){
-        toast.error("Invalid email or password. Please try again.");
-        setLoading(false)
-       }
+        if (error.code === "auth/invalid-credential") {
+          toast.error("Invalid email or password. Please try again.");
+          setLoading(false);
+        }
       });
     console.log(data);
   };
@@ -112,7 +146,11 @@ const Login = () => {
             <div className="flex-1 h-px sm:w-16 bg-[#00c194]"></div>
           </div>
           <div className="flex justify-center space-x-4">
-            <button aria-label="Log in with Google" className="p-3 rounded-sm">
+            <button
+              onClick={handleGoogleButton}
+              aria-label="Log in with Google"
+              className="p-3 rounded-sm"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 32 32"
@@ -122,7 +160,11 @@ const Login = () => {
               </svg>
             </button>
 
-            <button aria-label="Log in with GitHub" className="p-3 rounded-sm">
+            <button
+              onClick={handleGithubButton}
+              aria-label="Log in with GitHub"
+              className="p-3 rounded-sm"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 32 32"

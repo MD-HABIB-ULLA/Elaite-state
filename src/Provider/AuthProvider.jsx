@@ -1,5 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -13,14 +18,25 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const googleProvider = new GoogleAuthProvider();
+  const Gitprovider = new GithubAuthProvider();
+
+  const singInUserByGoogle = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  };
+  const singInUserByGithub = () => {
+    setLoading(true);
+    return signInWithPopup(auth, Gitprovider);
+  };
+
   const creatNewUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const updateUserProfile = (displayName, photoURL) => {
-    setLoading(true); // Set loading state to true
+    setLoading(true);
 
-    // Construct an object with the fields you want to update
     const profileData = {};
     if (displayName) {
       profileData.displayName = displayName;
@@ -28,20 +44,15 @@ const AuthProvider = ({ children }) => {
     if (photoURL) {
       profileData.photoURL = photoURL;
     }
-    // Add other fields as needed
-
-    // Update user profile using Firebase Auth method
     return updateProfile(auth.currentUser, profileData)
       .then(() => {
-        // Profile updated successfully
         console.log("User profile updated successfully");
       })
       .catch((error) => {
-        // An error occurred while updating the profile
         console.error("Error updating user profile:", error);
       })
       .finally(() => {
-        setLoading(false); // Set loading state back to false
+        setLoading(false);
       });
   };
 
@@ -77,6 +88,8 @@ const AuthProvider = ({ children }) => {
     signOutUser,
     setLoading,
     updateUserProfile,
+    singInUserByGoogle,
+    singInUserByGithub,
   };
   return (
     <>

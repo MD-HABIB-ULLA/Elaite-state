@@ -3,7 +3,7 @@ import { Authcontext } from "../../Provider/AuthProvider";
 import "animate.css";
 import { FaRegEdit, FaRegSave } from "react-icons/fa";
 import { useForm } from "react-hook-form";
-
+import { MdCancel } from "react-icons/md";
 const UpdateProfile = () => {
   const { user, updateUserProfile } = useContext(Authcontext);
   const [edit, setEdit] = useState(true);
@@ -13,7 +13,7 @@ const UpdateProfile = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data,e ) => {
+  const onSubmit = (data, e) => {
     console.log(data);
     updateUserProfile(data.username, data.photoURL);
     e.target.reset();
@@ -22,12 +22,12 @@ const UpdateProfile = () => {
   const handleEditBuTton = () => {
     setEdit(!edit);
   };
-  //   const handleSaveBuTton = () => {
-  //     setEdit(!edit);
-  //   };
+    const handlecancelBuTton = () => {
+      setEdit(!edit);
+    };
 
   return (
-    <div className="mb-10 p-2">
+    <div className="mb-10 p-2 min-h-screen ">
       <h1 className="text-center text-4xl my-5 font-bold text-[#00c194]">
         Update your profile now!!
       </h1>
@@ -86,6 +86,7 @@ const UpdateProfile = () => {
                     type="text"
                     id="username"
                     {...register("username", { required: true })}
+                    defaultValue={user.displayName}
                     placeholder="Username"
                     className="w-full px-4 py-3 focus:outline-none rounded-md border border-[#00c194] bg-[#ECF9F6]"
                   />
@@ -101,6 +102,7 @@ const UpdateProfile = () => {
                     type="text"
                     id="photoURL"
                     {...register("photoURL", { required: true })}
+                    defaultValue={user.photoURL}
                     placeholder="Photo URL"
                     className="w-full px-4 py-3 focus:outline-none rounded-md border border-[#00c194] bg-[#ECF9F6]"
                   />
@@ -109,13 +111,25 @@ const UpdateProfile = () => {
                   )}
                 </div>
                 {!edit ? (
-                  <button
-                    type="submit"
-                    className="btn bg-[#00c194] text-white font-bold mt-5 flex items-center justify-center text-base animate__animated animate__fadeIn"
-                  >
-                    <FaRegSave className=" " />
-                    Save
-                  </button>
+                  <>
+                    <div className="flex gap-1">
+                      {" "}
+                      <button
+                        type="submit"
+                        className="btn bg-[#00c194] text-white font-bold mt-5 flex items-center justify-center text-base animate__animated animate__fadeIn"
+                      >
+                        <FaRegSave className=" " />
+                        Save
+                      </button>
+                      <button
+                      onClick={handlecancelBuTton}
+                        className="btn bg-error text-white font-bold mt-5 flex items-center justify-center text-base animate__animated animate__fadeIn"
+                      >
+                        <MdCancel className=" " />
+                        Cancel
+                      </button>
+                    </div>
+                  </>
                 ) : (
                   ""
                 )}
