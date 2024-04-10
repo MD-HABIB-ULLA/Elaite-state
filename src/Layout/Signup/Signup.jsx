@@ -3,16 +3,17 @@ import svg from "../../assets/register.gif";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "animate.css";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Authcontext } from "../../Provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { updateProfile } from "firebase/auth";
-import auth from "../../firebase/Firebase.config";
 
 const Signup = () => {
-  const { creatNewUser, loading } = useContext(Authcontext);
+  const { creatNewUser, loading, updateUserProfile } = useContext(Authcontext);
   const [showPassword, setShowPassword] = useState(false);
+
+  const location = useLocation();
+  const navigate = useNavigate();
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
@@ -42,14 +43,11 @@ const Signup = () => {
   const onSubmit = (data, e) => {
     creatNewUser(data.email, data.password)
       .then((result) => {
-        return updateProfile(auth.currentUser, {
-          displayName: data.username,
-          photoURL: data.photoURL,
-        }).then(() => {
-          toast.success("Registration successful!");
-          console.log("register sucssesful", result.user);
-          e.target.reset();
-        });
+        updateUserProfile(data.username, data.photoURL);
+        toast.success("Registration successful!");
+        console.log("register sucssesful", result.user);
+        navigate(location?.state ? location.state : "/");
+        e.target.reset();
       })
       .catch((error) => {
         console.log(error);

@@ -3,13 +3,15 @@ import svg from "../../assets/loginsvg.gif";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "animate.css";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Authcontext } from "../../Provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
   const { signInUser, loading , setLoading} = useContext(Authcontext);
   const [showPassword, setShowPassword] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
@@ -25,6 +27,7 @@ const Login = () => {
       .then((result) => {
         console.log(result);
         toast.success("Login sucsessful");
+        navigate(location?.state ? location.state : "/");
         e.target.reset();
       })
       .catch((error) => {

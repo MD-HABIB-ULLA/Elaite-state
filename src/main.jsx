@@ -8,10 +8,14 @@ import Estates from "./Layout/Estates/Estates.jsx";
 import Login from "./Layout/Login/Login.jsx";
 import Signup from "./Layout/Signup/Signup.jsx";
 import AuthProvider from "./Provider/AuthProvider.jsx";
+import ErrorPage from "./Layout/ErrorPage/ErrorPage.jsx";
+import UpdateProfile from "./Layout/UpdateProfile/UpdateProfile.jsx";
+import PrivateRoute from "./Private/PrivateRoute.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -28,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: "signup",
         element: <Signup />,
+      },
+      {
+        path: "update-profile",
+        element: (
+          <PrivateRoute>
+            <UpdateProfile />
+          </PrivateRoute>
+        ),
       },
     ],
   },

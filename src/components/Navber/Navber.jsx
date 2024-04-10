@@ -5,9 +5,8 @@ import { useContext } from "react";
 import { Authcontext } from "../../Provider/AuthProvider";
 
 const Navber = () => {
-  const { user,  signOutUser , loading} = useContext(Authcontext);
-  
-  
+  const { user, signOutUser, loading } = useContext(Authcontext);
+  // const {photoURL} = user;
   const list = (
     <>
       <NavLink
@@ -96,7 +95,7 @@ const Navber = () => {
         <div className="menu menu-horizontal px-1 ">{list}</div>
       </div>
       <div className="navbar-end">
-        {user ? (
+        {/* {user ? (
           <div className="flex gap-3 items-center">
             <a className="my-anchor-element">
               <div
@@ -105,10 +104,11 @@ const Navber = () => {
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full">
-                  <img
-                    alt="User avatar"
-                    src={!loading? user.photoURL : ""}
-                  />
+                  {loading ? (
+                    <span className="loading loading-spinner loading-sm"></span>
+                  ) : (
+                    <img alt="User avatar" src={user.photoURL} />
+                  )}
                 </div>
               </div>
             </a>
@@ -118,6 +118,47 @@ const Navber = () => {
               place="left"
             >
               {user.displayName}
+            </Tooltip>
+            <button
+              onClick={handleSignOut}
+              className="btn bg-[#  ] text-white font-bold"
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <Link
+            to="/login"
+            className="btn bg-[#00c194] text-base hover:bg-[#00c19469] text-white font-bold"
+          >
+            Login
+          </Link>
+        )} */}
+        {loading ? (
+          <span className="loading loading-spinner loading-sm"></span>
+        ) : user ? (
+          <div className="flex gap-3 items-center">
+            <a className="my-anchor-element">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  {loading ? (
+                    <span className="loading loading-spinner loading-sm"></span>
+                  ) : (
+                    <img alt="User avatar" src={user.photoURL} />
+                  )}
+                </div>
+              </div>
+            </a>
+            <Tooltip
+              className="uppercase font-bold"
+              anchorSelect=".my-anchor-element"
+              place="left"
+            >
+              {user ? user.displayName: "habib"}
             </Tooltip>
             <button
               onClick={handleSignOut}
