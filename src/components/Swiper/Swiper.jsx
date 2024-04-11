@@ -33,7 +33,7 @@ const SwiperBanner = () => {
           <SwiperSlide key={i} className="bg-rose-100">
             <div className="h-full">
               <div
-                className="hero min-h-screen"
+                className="hero h-full"
                 style={{
                   backgroundImage: `url(${estate.image})`,
                 }}
