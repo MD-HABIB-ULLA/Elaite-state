@@ -79,7 +79,6 @@ const AuthProvider = ({ children }) => {
     return unsubscribe; // Return the unsubscribe function for cleanup
   }, []);
 
-  console.log(user);
   const authinfo = {
     creatNewUser,
     signInUser,
