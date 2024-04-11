@@ -16,7 +16,7 @@ const Estates = () => {
             <div className="card card-compact  bg-base-100 shadow-xl  rounded-lg">
               <Link to={`details/${estate.id}`} className="hover:opacity-80">
                 <figure>
-                  <img src={estate.image} alt="Shoes" className="h-64 w-full" />
+                  <img src={estate.image} alt="Shoes" className="h-64 w-full rounded-t-lg" />
                 </figure>
               </Link>
               <div className="card-body">

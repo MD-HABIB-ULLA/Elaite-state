@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const SwiperBanner = () => {
   const estates = useLoaderData();
@@ -50,14 +50,19 @@ const SwiperBanner = () => {
                         {estate.estate_title}
                       </h1>
                       <p className="py-6 text-white md:text-xl text-base animate__animated animate__fadeInUp">
-                        {estate.description}
+                        {estate.description.length > 100
+                          ? estate.description.slice(0, 120) + "..."
+                          : estate.description}
                       </p>
                       <p className="text-[#2db938] md:text-3xl text-xl font-bold animate__animated animate__fadeInUp">
                         Price : {estate.price}
                       </p>
-                      <button className="btn bg-[#00c194] text-white font-bold border-none">
-                        See Details
-                      </button>
+                      <Link to={`details/${estate.id}`}>
+                        {" "}
+                        <button className="btn bg-[#00c194] text-white font-bold border-none">
+                          See Details
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

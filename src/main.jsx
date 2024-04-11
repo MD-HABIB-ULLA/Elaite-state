@@ -10,6 +10,7 @@ import AuthProvider from "./Provider/AuthProvider.jsx";
 import ErrorPage from "./Layout/ErrorPage/ErrorPage.jsx";
 import UpdateProfile from "./Layout/UpdateProfile/UpdateProfile.jsx";
 import PrivateRoute from "./Private/PrivateRoute.jsx";
+import Details from "./Layout/Details/Details.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
       {
         path: "signup",
         element: <Signup />,
+      },
+      {
+        path: "details/:id",
+        loader: () => fetch("/estate.json"),
+        element: <PrivateRoute><Details /></PrivateRoute>,
       },
       {
         path: "update-profile",
