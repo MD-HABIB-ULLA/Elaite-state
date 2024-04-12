@@ -2,21 +2,37 @@ import { Link, useLoaderData } from "react-router-dom";
 import { CiLocationOn } from "react-icons/ci";
 import { LiaRulerCombinedSolid } from "react-icons/lia";
 import { BsCashCoin } from "react-icons/bs";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import "animate.css";
+
 const Estates = () => {
+  AOS.init();
   const estates = useLoaderData();
   console.log(estates);
   return (
-    <div className=" m-auto  mt-16 bg-[#23334A] py-20 mb-20">
+    <div className=" m-auto  mt-16 bg-[#23334A] py-20 mb-20 ">
       <h1 className="text-5xl font-bold  text-center text-white pb-10">
         Es<span className="border-b-2 ">ta</span>tes
       </h1>
       <div className="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 container m-auto  mt-10 gap-3 p-2 lg:p-0">
         {estates.map((estate, i) => (
-          <div key={i} className="relative">
-            <div className="card card-compact  bg-base-100 shadow-xl  rounded-lg">
+          <div
+            key={i}
+            className="relative"
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-once="false"
+            data-aos-anchor-placement="top-center"
+          >
+            <div className="card card-compact  bg-base-100 shadow-xl  rounded-lg ">
               <Link to={`details/${estate.id}`} className="hover:opacity-80">
                 <figure>
-                  <img src={estate.image} alt="Shoes" className="h-64 w-full rounded-t-lg" />
+                  <img
+                    src={estate.image}
+                    alt="Shoes"
+                    className="h-64 w-full rounded-t-lg"
+                  />
                 </figure>
               </Link>
               <div className="card-body">

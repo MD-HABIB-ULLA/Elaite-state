@@ -1,16 +1,19 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import "aos/dist/aos.css";
 import "animate.css";
-
+import AOS from "aos";
 const Details = () => {
+  AOS.init();
   const estates = useLoaderData();
   const id = parseInt(useParams().id);
+
   const estate = estates?.find((estate) => estate.id === id);
   return (
-    <div className="container m-auto mb-20 mt-10">
+    <div className="container m-auto mb-20 mt-10 p-2 lg:p-0 ">
       <h1 className="text-4xl mb-10 animate__animated animate__fadeInLeft">
         <span className="font-bold ">Details for : </span> {estate.estate_title}
       </h1>
-      <div className="grid lg:grid-cols-4  grid-cols-1 gap-5">
+      <div className="grid lg:grid-cols-4  grid-cols-1 gap-5 pl-5 lg:pl-0">
         <div className="lg:col-span-3  ">
           <div className="h-96 lg:h-[100vh] animate__animated animate__fadeInLeft">
             <img src={estate.image} className="h-full rounded-lg" />
@@ -34,7 +37,9 @@ const Details = () => {
               {estate.location}
             </h1>
             <h1>
-              <span className="font-bold text-base capitalize">Current status : </span>
+              <span className="font-bold text-base capitalize">
+                Current status :{" "}
+              </span>
               {estate.status}
             </h1>
             <h1>
@@ -43,9 +48,11 @@ const Details = () => {
             </h1>
             <h1 className="flex gap-4">
               <span className="font-bold text-base">facilities : </span>
-              <div className="">{estate.facilities.map((facility, index) => (
-                <li key={index}>{facility}</li>
-              ))}</div>
+              <div className="">
+                {estate.facilities.map((facility, index) => (
+                  <li key={index}>{facility}</li>
+                ))}
+              </div>
             </h1>
             <h1>
               <span className="font-bold text-base">Bedrooms : </span>
@@ -70,12 +77,19 @@ const Details = () => {
           </div>
         </div>
       </div>
-      <div className="mt-10 animate__animated animate__fadeIn">
+      <div
+        className="mt-10 animate__animated animate__fadeIn pl-5 lg:pl-0 "
+        data-aos="fade-right"
+        data-aos-duration="800"
+        data-aos-once="false"
+        data-aos-anchor-placement="top-center"
+      >
         <h1>
           <span className="font-bold text-2xl">Description : </span>
           {estate.description}
         </h1>
       </div>
+      <div>{/* <Leapletmap/> */}</div>
     </div>
   );
 };
