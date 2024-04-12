@@ -11,6 +11,7 @@ import ErrorPage from "./Layout/ErrorPage/ErrorPage.jsx";
 import UpdateProfile from "./Layout/UpdateProfile/UpdateProfile.jsx";
 import PrivateRoute from "./Private/PrivateRoute.jsx";
 import Details from "./Layout/Details/Details.jsx";
+import { HelmetProvider } from "react-helmet-async";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,7 +34,11 @@ const router = createBrowserRouter([
       {
         path: "details/:id",
         loader: () => fetch("/estate.json"),
-        element: <PrivateRoute><Details /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Details />
+          </PrivateRoute>
+        ),
       },
       {
         path: "update-profile",
@@ -49,8 +54,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <HelmetProvider>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </HelmetProvider>
   </React.StrictMode>
 );

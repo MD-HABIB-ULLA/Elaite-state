@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Authcontext } from "../../Provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const {
@@ -74,6 +75,9 @@ const Login = () => {
   };
   return (
     <div className="container m-auto">
+      <Helmet>
+        <title>Elite Estates | Login</title>
+      </Helmet>
       <div className="w-4/5 m-auto grid lg:grid-cols-2 grid-cols-1">
         <div className="w-full max-w-md p-8 space-y-3 rounded-xl border m-auto my-10 border-[#00c194] bg-[#ECF9F6] animate__animated animate__backInLeft ">
           <h1 className="text-4xl font-bold text-center">Login</h1>

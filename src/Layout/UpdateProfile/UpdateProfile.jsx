@@ -4,6 +4,7 @@ import "animate.css";
 import { FaRegEdit, FaRegSave } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { MdCancel } from "react-icons/md";
+import { Helmet } from "react-helmet-async";
 const UpdateProfile = () => {
   const { user, updateUserProfile } = useContext(Authcontext);
   const [edit, setEdit] = useState(true);
@@ -28,6 +29,9 @@ const UpdateProfile = () => {
 
   return (
     <div className="mb-10 p-2 min-h-screen ">
+      <Helmet>
+        <title>Elite Estates | Update profile</title>
+      </Helmet>
       <h1 className="text-center text-4xl my-5 font-bold text-[#00c194]">
         Update your profile now!!
       </h1>

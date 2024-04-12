@@ -2,6 +2,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import "aos/dist/aos.css";
 import "animate.css";
 import AOS from "aos";
+import { Helmet } from "react-helmet-async";
 const Details = () => {
   AOS.init();
   const estates = useLoaderData();
@@ -10,6 +11,9 @@ const Details = () => {
   const estate = estates?.find((estate) => estate.id === id);
   return (
     <div className="container m-auto mb-20 mt-10 p-2 lg:p-0 ">
+      <Helmet>
+        <title>Elite Estates |  {estate.estate_title}</title>
+      </Helmet>
       <h1 className="text-4xl mb-10 animate__animated animate__fadeInLeft">
         <span className="font-bold ">Details for : </span> {estate.estate_title}
       </h1>

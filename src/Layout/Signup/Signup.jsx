@@ -7,6 +7,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Authcontext } from "../../Provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet-async";
 
 const Signup = () => {
   const {
@@ -90,6 +91,9 @@ const Signup = () => {
 
   return (
     <div className="container m-auto">
+      <Helmet>
+        <title>Elite Estates | Signup</title>
+      </Helmet>
       <div className="w-4/5 m-auto grid lg:grid-cols-2 grid-cols-1">
         <div className="my-auto animate__animated animate__bounceIn ">
           <img src={svg} alt="" />

@@ -29,18 +29,7 @@ const Navber = () => {
         Home
       </NavLink>
 
-      <NavLink
-        className={({ isActive }) =>
-          `text-base px-3 p-1  ml-2 text-[#00c194] ${
-            isActive
-              ? " font-bold rounded-t-lg bg-[#00c19411] border-b-2 rounded-none  border-[#00c194]"
-              : "font-normal  border-none"
-          } `
-        }
-        to="estates"
-      >
-        Estates
-      </NavLink>
+     
 
       <NavLink
         className={({ isActive }) =>
