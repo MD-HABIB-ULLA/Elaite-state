@@ -12,6 +12,7 @@ import UpdateProfile from "./Layout/UpdateProfile/UpdateProfile.jsx";
 import PrivateRoute from "./Private/PrivateRoute.jsx";
 import Details from "./Layout/Details/Details.jsx";
 import { HelmetProvider } from "react-helmet-async";
+import PrivateRoutForLoginAndSignup from "./Private/PrivateroutForLoginAndSignup.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,11 +26,20 @@ const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <Login />,
+        element: (
+          <PrivateRoutForLoginAndSignup>
+            {" "}
+            <Login />
+          </PrivateRoutForLoginAndSignup>
+        ),
       },
       {
         path: "signup",
-        element: <Signup />,
+        element: (
+          <PrivateRoutForLoginAndSignup>
+            <Signup />
+          </PrivateRoutForLoginAndSignup>
+        ),
       },
       {
         path: "details/:id",

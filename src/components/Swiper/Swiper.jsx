@@ -1,4 +1,4 @@
-import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
+import { Navigation,  A11y, Autoplay } from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "animate.css";
@@ -13,12 +13,12 @@ import { Link, useLoaderData } from "react-router-dom";
 const SwiperBanner = () => {
   const estates = useLoaderData();
   return (
-    <div className=" md:px-10 px-3 mt-3">
+    <div className=" md:px-10 px-3 mt-3 lg:h-[70vh] h-auto">
       {" "}
       <Swiper
-        style={{ height: "calc(100vh - 8px)" }}
+        
         // install Swiper modules
-        modules={[Navigation, Pagination, Autoplay, A11y]}
+        modules={[Navigation,  Autoplay, A11y]}
         spaceBetween={0}
         slidesPerView={1}
         navigation
@@ -27,13 +27,13 @@ const SwiperBanner = () => {
         loop
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
-        className="rounded-lg"
+        className="rounded-lg h-full"
       >
         {estates.map((estate, i) => (
           <SwiperSlide key={i} className="bg-rose-100">
             <div className="h-full">
               <div
-                className="hero h-full"
+                className="hero h-full "
                 style={{
                   backgroundImage: `url(${estate.image})`,
                 }}
