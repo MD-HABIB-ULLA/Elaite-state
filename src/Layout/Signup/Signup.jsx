@@ -28,7 +28,7 @@ const Signup = () => {
   };
   console.log(location);
   const handleGoogleButton = () => {
-    signOutUser()
+    signOutUser();
     singInUserByGoogle()
       .then(() => {
         toast.success("Signin successful ");
@@ -37,14 +37,17 @@ const Signup = () => {
       })
       .catch((error) => {
         console.log(error);
-        if (error.code === "auth/account-exists-with-different-credential") {
+        if (
+          error.code === "auth/account-exists-with-different-credential" ||
+          error.code === "auth/email-already-in-use"
+        ) {
           toast.error("This email alreay exist");
           setLoading(false);
         }
       });
   };
   const handleGithubButton = () => {
-    signOutUser()
+    signOutUser();
     singInUserByGithub()
       .then(() => {
         toast.success("Sign In successful!");
@@ -52,7 +55,10 @@ const Signup = () => {
       })
       .catch((error) => {
         console.log(error.code);
-        if (error.code === "auth/account-exists-with-different-credential") {
+        if (
+          error.code === "auth/account-exists-with-different-credential" ||
+          error.code === "auth/email-already-in-use"
+        ) {
           toast.error("This email alreay exist");
           setLoading(false);
         }
@@ -81,7 +87,7 @@ const Signup = () => {
     return true;
   };
   const onSubmit = (data, e) => {
-    signOutUser()
+    signOutUser();
     creatNewUser(data.email, data.password)
       .then((result) => {
         updateUserProfile(data.username, data.photoURL);
@@ -92,6 +98,13 @@ const Signup = () => {
       })
       .catch((error) => {
         console.log(error);
+        if (
+          error.code === "auth/account-exists-with-different-credential" ||
+          error.code === "auth/email-already-in-use"
+        ) {
+          toast.error("This email alreay exist");
+          setLoading(false);
+        }
       });
   };
 
