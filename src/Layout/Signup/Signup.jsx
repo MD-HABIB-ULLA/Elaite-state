@@ -43,6 +43,9 @@ const Signup = () => {
         ) {
           toast.error("This email alreay exist");
           setLoading(false);
+        } if (error.code === "auth/popup-closed-by-user") {
+          toast.error("Sign-in process was not completed. Please try again.");
+          setLoading(false);
         }
       });
   };
@@ -61,7 +64,11 @@ const Signup = () => {
         ) {
           toast.error("This email alreay exist");
           setLoading(false);
+        } if (error.code === "auth/popup-closed-by-user") {
+          toast.error("Sign-in process was not completed. Please try again.");
+          setLoading(false);
         }
+        
       });
   };
   const {

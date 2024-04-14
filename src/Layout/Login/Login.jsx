@@ -33,8 +33,15 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
-        if (error.code === "auth/account-exists-with-different-credential") {
+        if (
+          error.code === "auth/account-exists-with-different-credential" ||
+          error.code === "auth/email-already-in-use"
+        ) {
           toast.error("This email alreay exist");
+          setLoading(false);
+        }
+        if (error.code === "auth/popup-closed-by-user") {
+          toast.error("Sign-in process was not completed. Please try again.");
           setLoading(false);
         }
       });
@@ -48,8 +55,15 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error.code);
-        if (error.code === "auth/account-exists-with-different-credential") {
+        if (
+          error.code === "auth/account-exists-with-different-credential" ||
+          error.code === "auth/email-already-in-use"
+        ) {
           toast.error("This email alreay exist");
+          setLoading(false);
+        }
+        if (error.code === "auth/popup-closed-by-user") {
+          toast.error("Sign-in process was not completed. Please try again.");
           setLoading(false);
         }
       });

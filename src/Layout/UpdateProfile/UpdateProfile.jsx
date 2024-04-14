@@ -53,7 +53,7 @@ const UpdateProfile = () => {
           </div>
         </div>
       </div> */}
-      <div className="hero lg:w-3/5 m-auto  bg-[#00c19411] shadow-xl border border-[#00c194] rounded-lg">
+      <div className="hero lg:w-3/5 m-auto  bg-[#00c19411] shadow-xl border border-[#00c194] rounded-lg animate__fadeInUp animate__animated">
         <div className="hero-content flex-col lg:flex-row">
           <img
             src={user.photoURL}

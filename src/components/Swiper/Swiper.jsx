@@ -40,7 +40,7 @@ const SwiperBanner = () => {
               >
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero bg-transparent lg:p-10">
-                  <div className="hero-content flex-col md:flex-row-reverse ">
+                  <div className="hero-content flex-col md:flex-row-reverse  ">
                     <img
                       src={estate.image}
                       className="md:w-[40%] w-full h-60 md:h-full rounded-lg shadow-2xl animate__animated animate__fadeInUp"
