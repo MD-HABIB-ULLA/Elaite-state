@@ -9,7 +9,6 @@ import "animate.css";
 const Estates = () => {
   AOS.init();
   const estates = useLoaderData();
-  console.log(estates);
   return (
     <div className=" m-auto  mt-16 bg-[#23334A] py-20 mb-20 ">
       <h1 className="text-5xl font-bold  text-center text-white pb-10">
@@ -63,7 +62,7 @@ const Estates = () => {
                   <Link to={`details/${estate.id}`}>
                     {" "}
                     <button className="btn bg-[#00C194] text-white font-bold hover:bg-[#00c19479]">
-                      See Details
+                    View Property
                     </button>
                   </Link>
                 </div>

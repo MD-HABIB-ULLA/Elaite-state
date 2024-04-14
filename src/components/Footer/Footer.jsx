@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 const Footer = () => {
   return (
@@ -5,27 +6,25 @@ const Footer = () => {
       <footer className="px-4 divide-y bg-[#0f2d4f] text-white">
         <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
           <div className="lg:w-1/3">
-          <img className="h-28 m-auto" src={logo} alt="Logo" />
+            <img className="h-28 m-auto" src={logo} alt="Logo" />
           </div>
           <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
             <div className="space-y-3">
               <h3 className=" tracking-wide uppercase text-[#00c194] font-bold text-base">
-              Quick Links
+                Quick Links
               </h3>
               <ul className="space-y-1">
                 <li>
-                <a href="#">Home</a>
+                  <Link to='/' href="#">Home</Link>
                 </li>
                 <li>
-                <a href="#">Estates</a>
+                  <Link to='/login' href="#">Login</Link>
                 </li>
                 <li>
-                <a href="#"> Update Profile</a>
+                  <Link to='/signup' href="#">Signup</Link>
                 </li>
                 <li>
-                  <a rel="noopener noreferrer" href="#">
-                    Profile
-                  </a>
+                  <Link to='/update-profile' href="#"> Update Profile</Link>
                 </li>
               </ul>
             </div>
@@ -47,27 +46,39 @@ const Footer = () => {
               </ul>
             </div>
             <div className="space-y-3">
-              <h3 className=" uppercase text-[#00c194] font-bold text-base">Contact Us</h3>
+              <h3 className=" uppercase text-[#00c194] font-bold text-base">
+                Contact Us
+              </h3>
               <ul className="space-y-1">
                 <li>
                   <a rel="noopener noreferrer" href="#">
-                 <p> <strong>Address:</strong> 123 Luxury Avenue, Cityville, State</p>
+                    <p>
+                      {" "}
+                      <strong>Address:</strong> 123 Luxury Avenue, Cityville,
+                      State
+                    </p>
                   </a>
                 </li>
                 <li>
                   <a rel="noopener noreferrer" href="#">
-                  <p><strong>Phone:</strong> (123) 456-7890</p>
+                    <p>
+                      <strong>Phone:</strong> (123) 456-7890
+                    </p>
                   </a>
                 </li>
                 <li>
                   <a rel="noopener noreferrer" href="#">
-                  <p><strong>Email:</strong> info@luxuryrealestate.com</p>
+                    <p>
+                      <strong>Email:</strong> info@luxuryrealestate.com
+                    </p>
                   </a>
                 </li>
               </ul>
             </div>
             <div className="space-y-3">
-              <div className="uppercase  text-[#00c194] font-bold text-base">Social media</div>
+              <div className="uppercase  text-[#00c194] font-bold text-base">
+                Social media
+              </div>
               <div className="flex justify-start space-x-3">
                 <a
                   rel="noopener noreferrer"

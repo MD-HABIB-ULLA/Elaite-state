@@ -25,8 +25,8 @@ const SwiperBanner = () => {
         pagination={{ clickable: true }}
         autoplay={{ delay: 4000 }}
         loop
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
+        onSwiper={(swiper) =>{} }
+        onSlideChange={() => {}}
         className="rounded-lg h-full"
       >
         {estates.map((estate, i) => (

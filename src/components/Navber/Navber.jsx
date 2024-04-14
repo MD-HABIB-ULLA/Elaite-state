@@ -5,7 +5,8 @@ import { useContext } from "react";
 import { Authcontext } from "../../Provider/AuthProvider";
 import { useState } from "react";
 import { RiMenu2Line } from "react-icons/ri";
-import { IoMdClose } from "react-icons/io";
+import toast, { Toaster } from "react-hot-toast";
+
 const Navber = () => {
   const { user, signOutUser, loading } = useContext(Authcontext);
   const [isOpen, setIsOpen] = useState(false);
@@ -29,8 +30,6 @@ const Navber = () => {
         Home
       </NavLink>
 
-     
-
       <NavLink
         className={({ isActive }) =>
           `text-base px-3 p-1  ml-2 text-[#00c194] ${
@@ -48,16 +47,16 @@ const Navber = () => {
   const handleSignOut = () => {
     signOutUser()
       .then(() => {
-        // Sign-out successful.
+        toast.success("Sign-out successful");
         console.log("User signed out successfully");
       })
       .catch((error) => {
-        // An error happened.
         console.error("Error signing out:", error);
       });
   };
   return (
     <div className="navbar container m-auto ">
+      <Toaster position="top-center" reverseOrder={false} />
       <div className="navbar-start">
         <div className="dropdown">
           {isOpen ? (
@@ -67,7 +66,7 @@ const Navber = () => {
               className="btn btn-ghost lg:hidden text-2xl font-bold"
               onClick={toggleDropdown}
             >
-              <IoMdClose className="h-8 w-8 text-[#00c194]" />
+              <RiMenu2Line className="h-8 w-8 text-[#00c194]" />
             </div>
           ) : (
             <div

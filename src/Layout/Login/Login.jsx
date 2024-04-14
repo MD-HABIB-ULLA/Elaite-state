@@ -5,13 +5,14 @@ import "animate.css";
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Authcontext } from "../../Provider/AuthProvider";
-import { ToastContainer, toast } from "react-toastify";
+import toast, { Toaster } from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
-
 const Login = () => {
   const {
     signInUser,
     loading,
+    signOutUser,
+
     setLoading,
     singInUserByGoogle,
     singInUserByGithub,
@@ -24,6 +25,7 @@ const Login = () => {
   };
 
   const handleGoogleButton = () => {
+    signOutUser();
     singInUserByGoogle()
       .then(() => {
         toast.success("Sign In successful!");
@@ -38,6 +40,7 @@ const Login = () => {
       });
   };
   const handleGithubButton = () => {
+    signOutUser();
     singInUserByGithub()
       .then(() => {
         toast.success("Sign In successful!");
@@ -58,6 +61,7 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data, e) => {
+    signOutUser();
     signInUser(data.email, data.password)
       .then((result) => {
         console.log(result);
@@ -78,6 +82,7 @@ const Login = () => {
       <Helmet>
         <title>Elite Estates | Login</title>
       </Helmet>
+      <Toaster position="top-center" reverseOrder={false} />
       <div className="w-4/5 m-auto grid lg:grid-cols-2 grid-cols-1">
         <div className="w-full max-w-md p-8 space-y-3 rounded-xl border m-auto my-10 border-[#00c194] bg-[#ECF9F6] animate__animated animate__backInLeft ">
           <h1 className="text-4xl font-bold text-center">Login</h1>
@@ -194,18 +199,6 @@ const Login = () => {
           <img src={svg} alt="" />
         </div>
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </div>
   );
 };

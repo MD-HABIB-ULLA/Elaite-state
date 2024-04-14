@@ -10,14 +10,14 @@ const Details = () => {
 
   const estate = estates?.find((estate) => estate.id === id);
   return (
-    <div className="container m-auto mb-20 mt-10 p-2 lg:p-0 ">
+    <div className="container m-auto mb-20 mt-10 p-2 lg:p-2 ">
       <Helmet>
         <title>Elite Estates |  {estate.estate_title}</title>
       </Helmet>
       <h1 className="text-4xl mb-10 animate__animated animate__fadeInLeft">
         <span className="font-bold ">Details for : </span> {estate.estate_title}
       </h1>
-      <div className="grid lg:grid-cols-4  grid-cols-1 gap-5 pl-5 lg:pl-0">
+      <div className="grid lg:grid-cols-4  grid-cols-1 gap-5  lg:pl-0">
         <div className="lg:col-span-3  ">
           <div className="h-96 lg:h-[100vh] animate__animated animate__fadeInLeft">
             <img src={estate.image} className="h-full rounded-lg" />
@@ -27,7 +27,7 @@ const Details = () => {
           <h1 className="text-[#00c194] text-3xl border-b-2 border-[#00c194]  animate__animated animate__fadeInDown">
             Details :
           </h1>
-          <div className="space-y-4 animate__animated animate__fadeInRight">
+          <div className="space-y-4 animate__animated animate__fadeInRight pl-5">
             <h1>
               <span className="font-bold text-base">Segment Name : </span>
               {estate.segment_name}
@@ -82,8 +82,8 @@ const Details = () => {
         </div>
       </div>
       <div
-        className="mt-10 animate__animated animate__fadeIn pl-5 lg:pl-0 "
-        data-aos="fade-right"
+        className="mt-10  pl-5 lg:pl-0 "
+        data-aos="zoom-in"
         data-aos-duration="800"
         data-aos-once="false"
         data-aos-anchor-placement="top-center"
