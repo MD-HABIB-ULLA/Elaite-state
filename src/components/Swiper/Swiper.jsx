@@ -29,8 +29,8 @@ const SwiperBanner = () => {
         onSlideChange={() => {}}
         className="rounded-lg h-full"
       >
-        {estates.map((estate, i) => (
-          <SwiperSlide key={i} className="bg-rose-100">
+        {estates.map((estate) => (
+          <SwiperSlide key={estate.image} className="bg-rose-100">
             <div className="h-full">
               <div
                 className="hero h-full "
