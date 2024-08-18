@@ -160,13 +160,21 @@ const Navber = () => {
     //     )}
     //   </div>
     // </div>
-    <div className="max-w-7xl m-auto px-5 md:px-10">
+    <div className="max-w-7xl m-auto px-5 md:px-10 lg:mt-3">
       <div className="drawer ">
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
           {/* Navbar */}
           <div className="navbar flex-row-reverse lg:flex-row  w-full">
             <div className="flex-none lg:hidden">
+              {!user && (
+                <Link
+                  to="/login"
+                  className={`btn border-[#00c194] border-2 mr-2 bg-white text-[#00c194] text-base hover:bg-[#00c194] hover:text-white font-bold hover:border-[#00c194] duration-300`}
+                >
+                  Login
+                </Link>
+              )}
               <label
                 htmlFor="my-drawer-4"
                 aria-label="open sidebar"
@@ -182,12 +190,46 @@ const Navber = () => {
             </div>
             <div className="hidden flex-none lg:block z-50">
               <ul className="menu menu-horizontal">{list}</ul>
-              <Link
-                to="/login"
-                className="btn border-[#00c194] border-2 bg-white text-[#00c194] text-base hover:bg-[#00c194] hover:text-white font-bold hover:border-[#00c194] duration-300"
-              >
-                Login
-              </Link>
+              {!user?.photoURL ? (
+                <Link
+                  to="/login"
+                  className="btn border-[#00c194] border-2 bg-white text-[#00c194] text-base hover:bg-[#00c194] hover:text-white font-bold hover:border-[#00c194] duration-300"
+                >
+                  Login
+                </Link>
+              ) : (
+                <div className="dropdown dropdown-bottom dropdown-end">
+                  <div tabIndex={0} role="button" className=" m-1">
+                    {" "}
+                    <img
+                      alt="User avatar"
+                      className=" avatar ring-[2px] ring-[#00c194] rounded-full h-10 w-10 object-cover object-center"
+                      src={user?.photoURL}
+                    />
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content menu bg-base-100 rounded-box border border-[#00c194] z-[1] w-52 p-2 shadow"
+                  >
+                    <div className="flex flex-col justify-center items-center">
+                      <img
+                        alt="User avatar"
+                        className=" avatar rounded-full h-20 w-20 object-cover object-center"
+                        src={user.photoURL}
+                      />
+                      <p className="text-[#00c194] font-bold text-xl">
+                        {user?.displayName}
+                      </p>
+                      <button
+                        onClick={handleSignOut}
+                        className="btn bg-[#00c194] mt-3 text-white font-bold"
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>
