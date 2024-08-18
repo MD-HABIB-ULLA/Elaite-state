@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import SwiperBanner from "../../components/Swiper/Swiper";
 import Estates from "../Estates/Estates";
 import Info from "../../components/Extra/Info";
+import CountryDisplay from "../../components/CountryDisplay/CountryDisplay";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
         <title>Elite Estates | Home</title>
       </Helmet>
       <SwiperBanner />
+      <CountryDisplay/>
       <Estates />
       <Info />
     </div>

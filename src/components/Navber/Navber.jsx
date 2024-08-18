@@ -1,9 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
-
 import logo from "../../assets/logo.png";
 import { useContext } from "react";
 import { Authcontext } from "../../Provider/AuthProvider";
-
 import { RiMenu2Line } from "react-icons/ri";
 import toast from "react-hot-toast";
 
@@ -65,6 +63,7 @@ const Navber = () => {
       </NavLink>
     </>
   );
+
   const handleSignOut = () => {
     signOutUser()
       .then(() => {
@@ -75,91 +74,8 @@ const Navber = () => {
         console.error("Error signing out:", error);
       });
   };
+
   return (
-    // <div className="navbar container m-auto ">
-    //
-    //   <div className="navbar-start">
-    //     <div className="dropdown">
-    //       {isOpen ? (
-    //         <div
-    //           tabIndex={0}
-    //           role="button"
-    //           className="btn btn-ghost lg:hidden text-2xl font-bold"
-    //           onClick={toggleDropdown}
-    //         >
-    //           <RiMenu2Line className="h-8 w-8 text-[#00c194]" />
-    //         </div>
-    //       ) : (
-    //         <div
-    //           tabIndex={0}
-    //           role="button"
-    //           className="btn btn-ghost lg:hidden text-2xl font-bold"
-    //           onClick={toggleDropdown}
-    //         >
-    //           <RiMenu2Line className="h-8 w-8 text-[#00c194]" />
-    //         </div>
-    //       )}
-    //       {isOpen && (
-    //         <div
-    //           tabIndex={0}
-    //           className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-50"
-    //         >
-    //           {/* Dropdown content */}
-    //           {list}
-    //         </div>
-    //       )}
-    //     </div>
-    //     <Link to="/" className="  h-12 min-h-12 text-xl">
-    //       <img className="h-full" src={logo} alt="" />
-    //     </Link>
-    //   </div>
-    //   <div className="navbar-center hidden lg:flex">
-    //     <div className="menu menu-horizontal px-1 ">{list}</div>
-    //   </div>
-    //   <div className="navbar-end">
-    //     {loading ? (
-    //       <span className="loading loading-spinner loading-sm"></span>
-    //     ) : user ? (
-    //       <div className="flex gap-3 items-center">
-    //         <a className="my-anchor-element">
-    //           <div
-    //             tabIndex={0}
-    //             role="button"
-    //             className="btn btn-ghost btn-circle avatar"
-    //           >
-    //             <div className="w-10 rounded-full">
-    //               {loading ? (
-    //                 <span className="loading loading-spinner loading-sm"></span>
-    //               ) : (
-    //                 <img alt="User avatar" src={user.photoURL} />
-    //               )}
-    //             </div>
-    //           </div>
-    //         </a>
-    //         <Tooltip
-    //           className="uppercase font-bold"
-    //           anchorSelect=".my-anchor-element"
-    //           place="left"
-    //         >
-    //           {user ? user.displayName : "habib"}
-    //         </Tooltip>
-    //         <button
-    //           onClick={handleSignOut}
-    //           className="btn bg-[#00c194] text-white font-bold"
-    //         >
-    //           Logout
-    //         </button>
-    //       </div>
-    //     ) : (
-    //       <Link
-    //         to="/login"
-    //         className="btn bg-[#00c194] text-base hover:bg-[#00c19469] text-white font-bold"
-    //       >
-    //         Login
-    //       </Link>
-    //     )}
-    //   </div>
-    // </div>
     <div className="max-w-7xl m-auto px-5 md:px-10 lg:mt-3">
       <div className="drawer ">
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
