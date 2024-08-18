@@ -1,20 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
-import { Tooltip } from "react-tooltip";
+
 import logo from "../../assets/logo.png";
 import { useContext } from "react";
 import { Authcontext } from "../../Provider/AuthProvider";
-import { useState } from "react";
+
 import { RiMenu2Line } from "react-icons/ri";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const Navber = () => {
   const { user, signOutUser, loading } = useContext(Authcontext);
-  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen); // Toggle the isOpen state
-  };
-  // const {photoURL} = user;
   const list = (
     <>
       <NavLink
@@ -82,7 +77,7 @@ const Navber = () => {
   };
   return (
     // <div className="navbar container m-auto ">
-    //   <Toaster position="top-center" reverseOrder={false} />
+    //
     //   <div className="navbar-start">
     //     <div className="dropdown">
     //       {isOpen ? (
