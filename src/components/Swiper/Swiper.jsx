@@ -13,7 +13,7 @@ import { Link, useLoaderData } from "react-router-dom";
 const SwiperBanner = () => {
   const estates = useLoaderData();
   return (
-    <div className=" md:px-10 px-3 mt-3 lg:h-[70vh] h-auto">
+    <div className=" md:px-10 px-3 mt-3 lg:h-[70vh] h-auto z-20">
       {" "}
       <Swiper
         
