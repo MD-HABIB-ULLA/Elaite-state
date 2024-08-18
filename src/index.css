@@ -6,10 +6,11 @@
   font-family: "Josefin Sans", sans-serif;
 }
 
-.tooltip-container {
-  position: relative;
-  display: inline-block;
+.numans-regular {
+  font-family: "Numans", sans-serif;
+ 
 }
+
 
 .tooltip {
   visibility: hidden;

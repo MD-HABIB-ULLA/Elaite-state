@@ -20,10 +20,8 @@ const Navber = () => {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          `text-base px-3 p-1  ml-2 text-[#00c194] ${
-            isActive
-              ? " font-bold rounded-t-lg bg-[#00c19411] border-b-2 rounded-none border-[#00c194]"
-              : "font-normal  border-none"
+          `text-base px-3 p-1  ml-2  font-bold ${
+            isActive ? " text-[#00c194]" : "text-black"
           } `
         }
       >
@@ -32,10 +30,8 @@ const Navber = () => {
       <NavLink
         to="/aboutus"
         className={({ isActive }) =>
-          `text-base px-3 p-1  ml-2 text-[#00c194] ${
-            isActive
-              ? " font-bold rounded-t-lg bg-[#00c19411] border-b-2 rounded-none border-[#00c194]"
-              : "font-normal  border-none"
+          `text-base px-3 p-1  ml-2  font-bold ${
+            isActive ? " text-[#00c194]" : "text-black"
           } `
         }
       >
@@ -44,10 +40,8 @@ const Navber = () => {
 
       <NavLink
         className={({ isActive }) =>
-          `text-base px-3 p-1  ml-2 text-[#00c194] ${
-            isActive
-              ? " font-bold rounded-t-lg bg-[#00c19411] border-b-2 rounded-none border-[#00c194]"
-              : "font-normal  border-none"
+          `text-base px-3 p-1  ml-2  font-bold ${
+            isActive ? " text-[#00c194]" : "text-black"
           } `
         }
         to="/update-profile"
@@ -108,45 +102,6 @@ const Navber = () => {
         <div className="menu menu-horizontal px-1 ">{list}</div>
       </div>
       <div className="navbar-end">
-        {/* {user ? (
-          <div className="flex gap-3 items-center">
-            <a className="my-anchor-element">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar"
-              >
-                <div className="w-10 rounded-full">
-                  {loading ? (
-                    <span className="loading loading-spinner loading-sm"></span>
-                  ) : (
-                    <img alt="User avatar" src={user.photoURL} />
-                  )}
-                </div>
-              </div>
-            </a>
-            <Tooltip
-              className="uppercase font-bold"
-              anchorSelect=".my-anchor-element"
-              place="left"
-            >
-              {user.displayName}
-            </Tooltip>
-            <button
-              onClick={handleSignOut}
-              className="btn bg-[#  ] text-white font-bold"
-            >
-              Logout
-            </button>
-          </div>
-        ) : (
-          <Link
-            to="/login"
-            className="btn bg-[#00c194] text-base hover:bg-[#00c19469] text-white font-bold"
-          >
-            Login
-          </Link>
-        )} */}
         {loading ? (
           <span className="loading loading-spinner loading-sm"></span>
         ) : user ? (
