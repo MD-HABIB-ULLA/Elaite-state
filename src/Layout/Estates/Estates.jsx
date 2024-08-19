@@ -9,70 +9,53 @@ import "animate.css";
 const Estates = () => {
   AOS.init();
   const estates = useLoaderData();
+
   return (
     <div className=" m-auto  mt-16 bg-[#23334A] py-20 mb-20 ">
       <h1 className="text-5xl font-bold  text-center text-white pb-10">
         Es<span className="border-b-2 ">ta</span>tes
       </h1>
-      <div className="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 container m-auto  mt-10 gap-3 p-2 lg:p-0">
-        {estates.map((estate, i) => (
-          <div
-            key={i}
-            className="relative"
-            data-aos="fade-up"
-            data-aos-duration="800"
-            data-aos-once="false"
-            data-aos-anchor-placement="top-center"
-          >
-            <div className="card card-compact  bg-base-100 shadow-xl  rounded-lg ">
-              <Link to={`details/${estate.id}`} className="hover:opacity-80">
-                <figure>
-                  <img
-                    src={estate.image}
-                    alt="Shoes"
-                    className="h-64 w-full rounded-t-lg"
-                  />
-                </figure>
-              </Link>
-              <div className="card-body">
-                <h2 className="card-title"> {estate.estate_title}</h2>
-                <div className="flex w-full justify-between gap-1 md:gap-0">
-                  <div>
-                    <h1 className="flex gap-1 text-base items-center">
-                      <CiLocationOn className="lg:text-xl text-base" />
-                      {estate.location}
-                    </h1>
-                    <h1 className="flex gap-1 text-base items-center">
-                      <LiaRulerCombinedSolid className="text-xl" />
-                      {estate.area}
-                    </h1>
+
+      <div>
+        <div className="grid lg:grid-cols-2 grid-cols-1 max-w-7xl m-auto md:px-10 px-5 gap-5">
+          {estates.slice(0, 8).map((data) => (
+            <Link
+              key={data.id}
+              to={`details/${data.id}`}
+              className="grid grid-cols-3 md:h-52 hover:-translate-y-2 duration-500 cursor-pointer shadow-lg border border-white hover:border-[#00c194] w-full bg-white p-5 md:gap-2 gap-4 rounded-[30px]"
+            >
+              <div className=" h-full   ">
+                <img
+                  src={data.image}
+                  alt=""
+                  className="rounded-[20px]  h-full  object-cover object-center"
+                />
+              </div>
+              <div className="col-span-2 py-2">
+                <div className="flex h-full flex-col justify-between gap-4 ">
+                  <h1 className="lg:text-2xl md:text-xl text-base font-bold ">{data.estate_title}</h1>
+                  <div className="text-gray-500 font-bold   items-center md:text-base text-sm  flex flex-row justify-between">
+                    <p className="">{data.bedrooms} Bedrooms </p>
+                    <p>{data.area} </p>
+                    <p className="px-3 capitalize text-white py-1 bg-[#00c194] rounded-full">
+                      {data.status}
+                    </p>
                   </div>
-                  <div>
-                    {" "}
-                    <h1 className="flex gap-1 text-base items-center">
-                      <BsCashCoin className="text-xl" />
-                      <span className="text-green-600 font-bold">
-                        {" "}
-                        {estate.price}
-                      </span>
-                    </h1>
+                  <div className="flex md:flex-row justify-between md:text-base text-xs text-gray-500">
+                    <div className="flex items-center gap-2 lg:text-sm md:text-sm  text-xs">
+                      {" "}
+                      <CiLocationOn className="" />
+                      <p>{data.location}</p>
+                    </div>
+                    <p className="text-white px-3 bg-gray-600/30 rounded-lg p-1">
+                      {data.price}
+                    </p>
                   </div>
-                </div>
-                <div className="card-actions justify-start">
-                  <Link to={`details/${estate.id}`}>
-                    {" "}
-                    <button className="btn bg-[#00C194] text-white font-bold hover:bg-[#00c19479]">
-                    View Property
-                    </button>
-                  </Link>
                 </div>
               </div>
-            </div>
-            <div className="absolute z-20 top-3 bg-[#6bc702] text-white left-3 px-2 rounded-lg uppercase">
-              {estate.status}
-            </div>
-          </div>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
