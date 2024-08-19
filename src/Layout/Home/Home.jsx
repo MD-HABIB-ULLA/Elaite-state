@@ -4,6 +4,7 @@ import Estates from "../Estates/Estates";
 import Info from "../../components/Extra/Info";
 import CountryDisplay from "../../components/CountryDisplay/CountryDisplay";
 import SimpleContactUs from "../../components/SimpleContactUs/SimpleContactUs";
+import FindHome from "../../components/FindHome/FindHome";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
         <title>Elite Estates | Home</title>
       </Helmet>
       <SwiperBanner />
+      <FindHome/>
       <CountryDisplay/>
       <Estates />
       <Info />

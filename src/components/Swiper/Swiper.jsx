@@ -46,7 +46,7 @@ const SwiperBanner = () => {
                       className="md:w-[40%] w-full h-60 md:h-full rounded-lg shadow-2xl animate__animated animate__fadeInUp"
                     />
                     <div className="lg:p-5 md:space-y-2">
-                      <h1 className="md:text-5xl text-3xl font-bold text-white underline animate__animated animate__fadeInUp">
+                      <h1 className="md:text-4xl text-3xl font-bold text-white underline animate__animated animate__fadeInUp">
                         {estate.estate_title}
                       </h1>
                       <p className="py-6 text-white md:text-xl text-base animate__animated animate__fadeInUp">
@@ -54,7 +54,7 @@ const SwiperBanner = () => {
                           ? estate.description.slice(0, 120) + "..."
                           : estate.description}
                       </p>
-                      <p className="text-[#2db938] md:text-3xl text-xl font-bold animate__animated animate__fadeInUp">
+                      <p className="text-[#2db938] md:text-2xl text-xl font-bold animate__animated animate__fadeInUp">
                         Price : {estate.price}
                       </p>
                       <Link to={`details/${estate.id}`}>
