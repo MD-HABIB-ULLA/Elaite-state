@@ -3,6 +3,7 @@ import SwiperBanner from "../../components/Swiper/Swiper";
 import Estates from "../Estates/Estates";
 import Info from "../../components/Extra/Info";
 import CountryDisplay from "../../components/CountryDisplay/CountryDisplay";
+import SimpleContactUs from "../../components/SimpleContactUs/SimpleContactUs";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <CountryDisplay/>
       <Estates />
       <Info />
+      <SimpleContactUs/>
     </div>
   );
 };

@@ -16,7 +16,7 @@ const AboutUs = () => {
         <title>Elite Estates | About Us</title>
       </Helmet>
       <div
-        className="hero "
+        className="hero bg-cover bg-center "
         style={{
           backgroundImage: `url(${img})`,
         }}
@@ -42,7 +42,7 @@ const AboutUs = () => {
             <div className="h-full animate__fadeInLeft animate__animated">
               <img
                 src="https://homepress.stylemixthemes.com/main/wp-content/uploads/sites/3/2018/12/about-1-1024x1024.jpg"
-                className="max-w-sm rounded-lg shadow-2xl w-full h-full"
+                className="max-w-sm rounded-lg shadow-2xl w-full h-full object-cover object-center"
               />
             </div>
             <div className="lg:w-1/2 h-full animate__fadeInRight animate__animated">
